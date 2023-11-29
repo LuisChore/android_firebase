@@ -9,7 +9,9 @@
 
 
 **Firebase Realtime Database steps**
+
 Firebase Console
+
 1. Create a project in [firebase console](console.firebase.google.com)
 2. Add  Firebase to an Android app
     1. Add config google services json file
@@ -51,11 +53,13 @@ MainActivity.java
         * getItemCount()
 
 MainActivity.java
+
 7. Create a RecyclerView instance via Data Binding and a CustomAdapter instance
 8. Define a Layout Manager for the RecyclerView object
 9. Link the RecyclerView with the Adapter 
 10. Add data to the SourceData
     * Notify changes to the RecyclerView via the Adapter
+
 
 
  **MainActivity Steps**
