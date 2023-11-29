@@ -20,6 +20,7 @@ Firebase Console
     1. Add the Realtime Database dependencies 
 
 MainActivity.java
+
 4. Get a FirebaseDatabase instance
 5. Get a DatabaseReference 
 6. Fetch the data from Firebase into RecyclerView
