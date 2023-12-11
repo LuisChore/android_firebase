@@ -54,23 +54,20 @@ public class SignUpActivity extends AppCompatActivity {
             }
         };
 
-        createBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!TextUtils.isEmpty(emailCreate.getText().toString()) &&
-                    !TextUtils.isEmpty(passwordCreate.getText().toString()) &&
-                    !TextUtils.isEmpty(usernameCreate.getText().toString())) {
-                    String email = emailCreate.getText().toString().trim();
-                    String pass = passwordCreate.getText().toString().trim();
-                    String username = usernameCreate.getText().toString().trim();
-                    createUserEmailAccount(email,pass,username);
-                }else{
-                    Toast.makeText(SignUpActivity.this,
-                            "No fields allowed to be empty",
-                            Toast.LENGTH_LONG).show();
-                }
-
+        createBTN.setOnClickListener(view -> {
+            if(!TextUtils.isEmpty(emailCreate.getText().toString()) &&
+                !TextUtils.isEmpty(passwordCreate.getText().toString()) &&
+                !TextUtils.isEmpty(usernameCreate.getText().toString())) {
+                String email = emailCreate.getText().toString().trim();
+                String pass = passwordCreate.getText().toString().trim();
+                String username = usernameCreate.getText().toString().trim();
+                createUserEmailAccount(email,pass,username);
+            }else{
+                Toast.makeText(SignUpActivity.this,
+                        "No fields allowed to be empty",
+                        Toast.LENGTH_LONG).show();
             }
+
         });
     }
 
