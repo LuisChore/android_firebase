@@ -9,10 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -26,6 +28,8 @@ import java.util.List;
 
 public class JournalListActivity extends AppCompatActivity {
 
+    // widgets
+    private FloatingActionButton floatingActionButton;
     // Firebase Auth
     /*
     To acknowledge the current auth state of the user
@@ -65,6 +69,12 @@ public class JournalListActivity extends AppCompatActivity {
 
         //Posts arraylist
         data = new ArrayList<>();
+
+        floatingActionButton = findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(view -> {
+            Intent i = new Intent(JournalListActivity.this,AddJournalActivity.class);
+            startActivity(i);
+        });
     }
 
     @Override

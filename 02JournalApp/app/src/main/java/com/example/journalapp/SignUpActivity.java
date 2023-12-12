@@ -47,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 firebaseUser = firebaseAuth.getCurrentUser();
                 if(firebaseUser != null){
-
+                    //return to MainActivity?
                 }else{
 
                 }
