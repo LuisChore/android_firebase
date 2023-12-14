@@ -73,3 +73,200 @@ MainActivity.java
     * Binding objects
          * MainActivityBinding
 
+
+
+
+## [Journal App](https://github.com/LuisChore/android_firebase/tree/main/02JournalApp)
+
+**Description**: App that displays a collection of Journals stored in the Firebase Firestore database. It uses Firebase Authentication for signing up. Logged users can upload a new Journal to the database, the Journals include: description, title and an image, the images are stored using Firebase Storage. 
+
+**Android Topics**:
+
+* *SHA1*
+* *Firebase Authentication*
+* *Firebase Cloud Firestore*
+* *Firebase Storage*
+* *Glide Library*
+* *Menu Resource*
+* *ActivityResultLauncher*
+
+
+**Firebase Steps**
+
+*Firebase Console*
+
+1. Create a project in [firebase console](console.firebase.google.com)
+2. Add Firebase to your Android app
+    * Register App
+      * SHA1
+    * Add config google services json file
+    * Add plugins and dependencies 
+
+*Cloud Firestore Console*
+
+1. Create a Database (test mode) 
+2. Add dependency
+
+*Authentication Console*
+
+1. Get started
+    * Add Sign-In method (Email/Password) 
+2. Add dependency 
+
+*Storage Console*
+
+1. Get Started (test mode) 
+2. Add dependency 
+
+**Glide Steps**
+
+1. Add dependency
+2. Add the compiler using ‘annotationProcessor’
+3. Call the method
+```
+Glide.with(context).load(imageUrl).fitCenter().into(imageView)
+
+```
+
+**Firebase Authentication Steps**
+
+1. Listen for changes in the user authentication state
+
+*SignUpActivity.java*
+
+* Get an instance of FirebaseAuth class
+* Create an AuthStateListener interface instance 
+    * Implement onAuthStateChanged() method
+    *  Get the current FirebaseUser to update  status
+        ```
+        firebaseUser = firebaseAuth.getCurrentUser()
+        ```
+
+2. Create a new User Account
+
+*SignUpActivity.java*
+
+* Get an instance of FirebaseAuth class
+* Call method 
+    ```
+    firebaseAuth.createUserWithEmailAndPassword()
+    ```
+* Add Listener addOnCompleteListener 
+    * Implement onComplete() method
+
+
+3. Authentication SignIn / Signout 
+
+*MainActivity.java*
+
+* Get an instance of FirebaseAuth class
+* Call method 
+    ```
+    firebaseAuth.signInWithEmailAndPassword
+    ```
+* Add Listener addOnSuccessListener 
+    * Implement onSuccess() method
+ 
+*JournalListActivity.java*
+
+* Get an instance of FirebaseAuth class
+* Get the current FirebaseUser to check status
+    ```
+    firebaseUser = firebaseAuth.getCurrentUser()
+    ```
+* Call the method 
+    ```
+    firebaseUser.signOut()
+    ```
+
+**Firebase Firestore Steps**
+
+*JournalListActivity.java (steps)*
+
+* Get a FirebaseFirestore instance 
+* Get a CollectionReference from the firebaseFirestore instance
+* Call collectionReference.get() method
+* Add Listener addOnSuccessListener
+    * Implement onSuccess() method
+* Add addOnFailureListener
+    * Implement onFailure() method 
+
+*AddJournalActivity.java (Write)*
+
+* Get a FirebaseFirestore instance 
+* Get a CollectionReference from the firebaseFirestore instance
+* Call collectionReference.add(modelClass) method
+* Add Listener addOnSuccessListener
+    * Implement onSuccess() method
+* Add addOnFailureListener
+    * Implement onFailure() method 
+
+
+ **Firebase Storage steps**
+
+*AddJournalActivity.java (Upload a File)*
+
+* Get a StorageReference to the root location from a FirebaseStorage instance
+    ```
+    StorageReference storageReference =  FirebaseStorage.getIntance().getReference()
+    ```
+
+* Get a StorageReference (filePath) to a specific child using the storageReference object
+    ```
+    Storage Reference filePath = storageReference.child(“”).child(“”)...
+    ```
+* Upload a file using filePath.putFile(uriFile)
+
+* Add Listener addOnSuccessListener
+    * Implement onSuccess() method
+* Add addOnFailureListener
+    * Implement onFailure() method
+
+
+*AddJournalActivity.java (Download a File)*
+
+* Get a StorageReference to the root location from a FirebaseStorage instance
+    ```
+    StorageReference storageReference =  FirebaseStorage.getIntance().getReference()
+    ```
+
+* Get a StorageReference (filePath) to a specific child using the storageReference object
+    ```
+    Storage Reference filePath = storageReference.child(“”).child(“”)...
+    ```
+* Call the method filePath.getDownloadUrl()
+* Add Listener addOnSuccessListener
+    * Implement onSuccess() method
+* Add addOnFailureListener
+    * Implement onFailure() method
+
+
+**Get a result from an activity steps**
+ (Get an image from gallery) 
+
+*AddJournalActivity.java*
+
+1. Create an ActivityResultLauncher
+    ```
+    ActivityResultLauncher<String> mTakePhoto
+    ```
+
+2. Register for ActivityResult 
+    ```
+    mTakePhoto = registerForActivityResult(ActivityResultContract, ActivityResultCallBack)...
+    ```
+3. Launch an activity for result
+    ```
+    mTakePhoto.launch()
+    ```
+
+
+**Menu Steps**
+
+* Create a menu layout (my_menu.xml)
+    * Add list of items
+* Override onCreateOptionsMenu (JournalListActivity.java)
+    * Inflate the Menu Layout 
+* Override onOptionsItemSelected (JournalListActivity.java)
+    * Handle each menu item 
+
