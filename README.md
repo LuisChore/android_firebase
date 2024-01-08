@@ -82,13 +82,13 @@ MainActivity.java
 
 **Android Topics**:
 
-* *SHA1*
-* *Firebase Authentication*
-* *Firebase Cloud Firestore*
-* *Firebase Storage*
-* *Glide Library*
-* *Menu Resource*
-* *ActivityResultLauncher*
+* *SHA1*: Cryptographic hash function, in the context of Android App signing, is used  to create a unique fingerprint of your app signing key.  
+* *Firebase Authentication* : Firebase service that provides backend services, to authenticate users to your app. It supports authentication using passwords, phone numbers, Google signins, etc. 
+* *Firebase Cloud Firestore*:  NoSQL cloud database, built on Google Cloud infrastructure, to store and sync data for client- and server-side development.
+* *Firebase Storage*: Firebase service to store and serve user-generated content, such as photos or videos.
+* *Glide Library*: Fast and efficient image loading library for Android
+* *Menu Resource*: A menu resource defines an application menu—an options menu, context menu, or submenu—
+* *ActivityResultLauncher*: Used to start an Activity and get a result from it. 
 
 
 **Firebase Steps**
