@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "283297513672",
+    "project_id": "chatapp-84f3c",
+    "storage_bucket": "chatapp-84f3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283297513672:android:8368265bcbdc879468e5fd",
+        "android_client_info": {
+          "package_name": "com.luischore.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpLr9SqP-KXkYX8pj8xqcTO23LbTBwrVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
