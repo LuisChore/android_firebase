@@ -6,8 +6,12 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 
+import com.luischore.chatapp.model.ChatGroup;
 import com.luischore.chatapp.repository.Repository;
+
+import java.util.List;
 
 public class MyViewModel extends AndroidViewModel {
     Repository repository;
@@ -17,6 +21,7 @@ public class MyViewModel extends AndroidViewModel {
         this.repository = new Repository();
     }
 
+    // Auth methods
     public void signUpAnonymousUser( ){
         Context c = this.getApplication();
         repository.firebaseAnonymousAuthentication(c);
@@ -28,5 +33,10 @@ public class MyViewModel extends AndroidViewModel {
 
     public void singOut(){
         repository.signOut();
+    }
+
+    // Realtime DB methods
+    public MutableLiveData<List<ChatGroup>> getChatGroupsList(){
+        return repository.getChatGroupsMutableLiveData();
     }
 }
