@@ -282,10 +282,12 @@ Glide.with(context).load(imageUrl).fitCenter().into(imageView)
 * *Repository*: Class that gathers and manages multiple sources of data and provides an API used by ViewModel.
 * *MutableLiveData<T>* : Class provided by Android Architecture components that is used to hold and observe data changes. It is mutable because you can change the data it holds over time.
 * *Dialog:* Small window that prompts the user to make a decision or enter additional information.
+![Screenshot_20240115-141516]()
 
- <img src="https://github.com/LuisChore/android_firebase/assets/30536589/c0a17fe0-1994-4b94-9418-da45e97483a" width="100" height="150">
- <img src="https://github.com/LuisChore/android_firebase/assets/30536589/46a6b2f2-d75a-4f4c-a390-510d02d96c56" width="100" height="150">
- <img src="https://github.com/LuisChore/android_firebase/assets/30536589/ecd95d71-7393-449e-a439-c7566eabb486" width="100" height="150">
+
+ <img src="https://github.com/LuisChore/android_firebase/assets/30536589/665a3bd9-09d9-4a12-891f-55a89c9fc6bb" width="200" height="250">
+ <img src="https://github.com/LuisChore/android_firebase/assets/30536589/46a6b2f2-d75a-4f4c-a390-510d02d96c56" width="200" height="250">
+ <img src="https://github.com/LuisChore/android_firebase/assets/30536589/ecd95d71-7393-449e-a439-c7566eabb486" width="200" height="250">
 
 
 
