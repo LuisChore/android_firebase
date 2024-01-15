@@ -269,4 +269,18 @@ Glide.with(context).load(imageUrl).fitCenter().into(imageView)
     * Inflate the Menu Layout 
 * Override onOptionsItemSelected (JournalListActivity.java)
     * Handle each menu item 
+    
+    
+## [Chat App](https://github.com/LuisChore/android_firebase/tree/main/03ChatApp)
+
+**Description**: Description: App that allows users to login anonymously using Firebase Authentication and enter into a Chat Group with different users. Every user can also create a new Chat Group, the database architecture is supported by Firebase Realtime Database, the app is developed using MVVM architecture. 
+
+
+**Android Topics**:
+
+* *Firebase Authentication (Anonymous):* It allows the user to use the app or access certain features without requiring them to sign up or log in with a traditional username and password. Instead it provides them with a temporary anonymous account that Firebase manages
+* *Repository*: Class that gathers and manages multiple sources of data and provides an API used by ViewModel.
+* *MutableLiveData<T>* : Class provided by Android Architecture components that is used to hold and observe data changes. It is mutable because you can change the data it holds over time.
+* *Dialog:* Small window that prompts the user to make a decision or enter additional information.
+
 
