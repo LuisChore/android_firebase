@@ -3,6 +3,7 @@ package com.luischore.chatapp.repository;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.text.MeasuredText;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -69,6 +70,8 @@ public class Repository {
                     ChatGroup group = new ChatGroup(dataSnapshot.getKey());
                     chatGroups.add(group);
                 }
+
+                Log.i("AYUDA","" + chatGroups.size());
                 chatGroupsMutableLiveData.postValue(chatGroups)  ;
             }
 
@@ -114,7 +117,7 @@ public class Repository {
                     System.currentTimeMillis()
             );
             String randomKey = groupReference.push().getKey();
-            reference.child(randomKey).setValue(msg);
+            groupReference.child(randomKey).setValue(msg);
         }
     }
 }

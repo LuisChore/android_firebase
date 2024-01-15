@@ -3,6 +3,9 @@ package com.luischore.chatapp.model;
 public class ChatGroup {
     private String groupName;
 
+    public ChatGroup() {
+    }
+
     public ChatGroup(String groupName) {
         this.groupName = groupName;
     }

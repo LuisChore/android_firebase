@@ -36,6 +36,8 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        //Data Source
+        messages = new ArrayList<>();
         // Binding
         binding = DataBindingUtil.setContentView(this,R.layout.activity_chat);
         //ViewModel
@@ -44,7 +46,6 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView = binding.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-
         //Bind ViewModel
         binding.setViewModel(viewModel);
 
@@ -53,9 +54,9 @@ public class ChatActivity extends AppCompatActivity {
         viewModel.getChatMessageList(groupName).observe(this, new Observer<List<ChatMessage>>() {
             @Override
             public void onChanged(List<ChatMessage> chatMessages) {
-                messages = new ArrayList<>();
-                messages.addAll(chatMessages);
 
+                messages.clear();
+                messages.addAll(chatMessages);
                 adapter = new ChatAdapter(messages,getApplicationContext());
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

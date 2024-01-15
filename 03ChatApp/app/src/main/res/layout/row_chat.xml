@@ -26,6 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
+                    android:padding="5dp"
                     android:text="@{chatMessage.messageText}"
                     android:layout_gravity="start"/>
                 
@@ -33,8 +34,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:textColor="@color/black"
                 android:text="@{chatMessage.convertTime()}"
                 android:textSize="8sp"/>
         </LinearLayout>
@@ -49,7 +51,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:text="@{chatMessage.convertTime()}"
                 android:textSize="8sp"/>
@@ -62,7 +65,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
                     android:text="@{chatMessage.messageText}"
                     android:layout_gravity="end"/>
             </LinearLayout>
