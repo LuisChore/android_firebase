@@ -1,5 +1,6 @@
 package com.luischore.chatapp.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.luischore.chatapp.R;
 import com.luischore.chatapp.databinding.ItemCardBinding;
 import com.luischore.chatapp.model.ChatGroup;
+import com.luischore.chatapp.view.ChatActivity;
 
 import java.util.ArrayList;
 
@@ -30,7 +32,10 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
             this.binding = binding;
             binding.getRoot().setOnClickListener(view -> {
                 int position = getAdapterPosition();
-
+                ChatGroup chatGroup = data.get(position);
+                Intent i = new Intent(view.getContext(), ChatActivity.class);
+                i.putExtra("GROUP_NAME",chatGroup.getGroupName());
+                view.getContext().startActivity(i);
             });
         }
     }

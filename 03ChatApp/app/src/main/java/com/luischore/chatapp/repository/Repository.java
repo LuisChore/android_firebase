@@ -2,20 +2,24 @@ package com.luischore.chatapp.repository;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.text.MeasuredText;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.luischore.chatapp.model.ChatGroup;
+import com.luischore.chatapp.model.ChatMessage;
 import com.luischore.chatapp.view.GroupsActivity;
 
 import java.util.ArrayList;
@@ -24,13 +28,15 @@ import java.util.List;
 public class Repository {
 
     MutableLiveData<List<ChatGroup>> chatGroupsMutableLiveData;
+    MutableLiveData<List<ChatMessage>> messagesMutableLiveData;
     FirebaseDatabase database;
     DatabaseReference reference;
 
     public Repository() {
         chatGroupsMutableLiveData = new MutableLiveData<>();
+        messagesMutableLiveData = new MutableLiveData<>();
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference();
+        reference = database.getReference(); // root
     }
 
     //Auth Methods
@@ -74,4 +80,41 @@ public class Repository {
         return chatGroupsMutableLiveData;
     }
 
+    public void createNewChatGroup(String groupName){
+        reference.child(groupName).setValue(groupName);
+    }
+
+    public MutableLiveData<List<ChatMessage>> getMessagesMutableLiveData(String groupName) {
+        DatabaseReference groupReference = database.getReference().child(groupName);
+        List<ChatMessage> messageList = new ArrayList<>();
+        groupReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                messageList.clear();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    ChatMessage chatMessage = dataSnapshot.getValue(ChatMessage.class);
+                    messageList.add(chatMessage);
+                }
+                messagesMutableLiveData.postValue(messageList);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return messagesMutableLiveData;
+    }
+
+    public void sendMessage(String messageText,String chatGroup){
+        DatabaseReference groupReference = database.getReference(chatGroup);
+        if(!messageText.trim().equals("")){
+            ChatMessage msg = new ChatMessage(
+                    FirebaseAuth.getInstance().getCurrentUser().getUid(),
+                    messageText,
+                    System.currentTimeMillis()
+            );
+            String randomKey = groupReference.push().getKey();
+            reference.child(randomKey).setValue(msg);
+        }
+    }
 }

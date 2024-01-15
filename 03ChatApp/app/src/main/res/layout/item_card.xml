@@ -9,8 +9,9 @@
     </data>
     <androidx.cardview.widget.CardView 
         android:layout_width="match_parent"
+        android:background="#878C9C"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="25dp"
         android:layout_margin="16dp">
         
         <androidx.constraintlayout.widget.ConstraintLayout

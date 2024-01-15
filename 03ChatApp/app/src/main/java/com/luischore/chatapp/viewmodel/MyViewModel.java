@@ -9,6 +9,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.luischore.chatapp.model.ChatGroup;
+import com.luischore.chatapp.model.ChatMessage;
 import com.luischore.chatapp.repository.Repository;
 
 import java.util.List;
@@ -38,5 +39,15 @@ public class MyViewModel extends AndroidViewModel {
     // Realtime DB methods
     public MutableLiveData<List<ChatGroup>> getChatGroupsList(){
         return repository.getChatGroupsMutableLiveData();
+    }
+    public MutableLiveData<List<ChatMessage>> getChatMessageList(String groupName){
+        return repository.getMessagesMutableLiveData(groupName);
+    }
+
+    public void createNewGroup(String groupName){
+        repository.createNewChatGroup(groupName);
+    }
+    public void sendMessage(String messageText,String chatGroup){
+        repository.sendMessage(messageText,chatGroup);
     }
 }
